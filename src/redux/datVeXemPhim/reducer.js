@@ -26,13 +26,13 @@ export const GheReducer = (state = STATE_DEFAULT, action) => {
 
             // console.log(action.payload);
 
-            if(action.payload === ''){
-                alert("vui lòng nhập họ tên, nếu không quý khách sẽ bị mất vé!");
-            }else{
-                state.Ten = action.payload;
-            }
+            // if(action.payload === ''){
+            //     alert("vui lòng nhập họ tên, nếu không quý khách sẽ bị mất vé!");
+            // }else{
+            //     state.Ten = action.payload;
+            // }
 
-            // state.Ten = action.payload;
+            state.Ten = action.payload;
             return { ...state }
             
         case DatVeXemPhim.GheDaChon:

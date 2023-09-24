@@ -195,7 +195,7 @@ const STATE_DEFAULT = [
 
 class DatVeXemPhim extends Component {
   render() {
-    let phay = "1";
+
     const danhSachGheAll = [];
     for (let i = 1; i < STATE_DEFAULT.length; i++) {
       const element = STATE_DEFAULT[i].danhSachGhe;
@@ -216,7 +216,7 @@ class DatVeXemPhim extends Component {
         <div className="container form__datve">
           <h4>Fill The Required Details Below And Select Your Seats</h4>
           <div className="form__datve_thongtin">
-            <input id="name" type="text"/>
+            <input id="name" type="text" />
             {/* <input type="number" /> */}
           </div>
           {/* <button>
@@ -245,33 +245,43 @@ class DatVeXemPhim extends Component {
                     <button
                       id={soGhe.soGhe}
                       onClick={() => {
-                        document.getElementById(
-                          `${soGhe.soGhe}`
-                        ).style.background = "green";
-                        console.log(soGhe.soGhe);
-                        console.log(soGhe.gia);
+                        
+                        // console.log(soGhe.soGhe);
+                        // console.log(soGhe.gia);
 
                         // const soGheChon = document.getElementById(`${soGhe.soGhe}`).value;
                         // console.log(soGheChon);
-                        //! lấy Seat
-                        const chonGhe = GheDaChon(soGhe.soGhe);
+
                         // const allGheDaChon = [...chonGhe]
                         // mangGheChonAll.push(chonGhe)
                         // console.log(mangGheChonAll);
 
-                        const action = chonGhe;
-                        console.log(action);
-                        this.props.dispatch(action);
-
-                        //! lấy Price
-                        const giaGhe = LayTien(soGhe.gia);
-                        const action1 = giaGhe;
-                        this.props.dispatch(action1);
-
                         //! lấy Name
                         const name = document.getElementById("name").value;
-                        const action2 = LayTen(name);
-                        this.props.dispatch(action2);
+                        if (name === '') {
+                          alert("XIN VUI LÒNG NHẬP TÊN!");
+                        } else {
+                          // khi click sẽ đổi màu ô đã chọn
+                          document.getElementById(
+                            `${soGhe.soGhe}`
+                          ).style.background = "green";
+
+
+                          const action2 = LayTen(name);
+                          this.props.dispatch(action2);
+
+                          //! lấy Seat
+                          const chonGhe = GheDaChon(soGhe.soGhe);
+                          const action = chonGhe;
+                          console.log(action);
+                          this.props.dispatch(action);
+
+                          //! lấy Price
+                          const giaGhe = LayTien(soGhe.gia);
+                          const action1 = giaGhe;
+                          this.props.dispatch(action1);
+                        }
+                        //
                       }}
                       className="bt__ghe"
                       key={soGhe.soGhe}
@@ -294,7 +304,7 @@ class DatVeXemPhim extends Component {
               <thead>
                 <tr>
                   <th scope="col">Name</th>
-                  
+
                   <th scope="col">Seat</th>
                   <th scope="col">All Seat Choose</th>
                   <th scope="col">Price</th>
@@ -303,19 +313,9 @@ class DatVeXemPhim extends Component {
               <tbody>
                 <tr>
                   <td>{this.props.Ten}</td>
-                  
-                  <td>
-                    {
-                      " " + this.props.MangGheChon
-                    }
-                  
-                  </td>
-                  <td>
-                    {
-                      this.props.SoGhe
-                    }
-                  
-                  </td>
+
+                  <td>{" " + this.props.MangGheChon}</td>
+                  <td>{this.props.SoGhe}</td>
                   <td>{this.props.SoTien}</td>
                 </tr>
               </tbody>
