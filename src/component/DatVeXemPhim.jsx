@@ -195,6 +195,7 @@ const STATE_DEFAULT = [
 
 class DatVeXemPhim extends Component {
   render() {
+    let phay = "1";
     const danhSachGheAll = [];
     for (let i = 1; i < STATE_DEFAULT.length; i++) {
       const element = STATE_DEFAULT[i].danhSachGhe;
@@ -292,7 +293,6 @@ class DatVeXemPhim extends Component {
             <table className="table">
               <thead>
                 <tr>
-                  <th scope="col">#</th>
                   <th scope="col">Name</th>
                   
                   <th scope="col">Seat</th>
@@ -302,12 +302,11 @@ class DatVeXemPhim extends Component {
               </thead>
               <tbody>
                 <tr>
-                  <th scope="row">1</th>
                   <td>{this.props.Ten}</td>
                   
                   <td>
                     {
-                      this.props.MangGheChon+","
+                      " " + this.props.MangGheChon
                     }
                   
                   </td>
